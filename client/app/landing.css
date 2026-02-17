@@ -1,0 +1,30 @@
+/* Landing page overrides - Bootstrap-based */
+.landing-bootstrap .hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.landing-bootstrap .hero-bg .object-cover {
+  object-fit: cover;
+}
+
+.landing-bootstrap .letter-spacing-2 {
+  letter-spacing: 0.2em;
+}
+
+.landing-bootstrap .navbar-collapse.collapse {
+  transition: none;
+}
+
+@media (max-width: 991.98px) {
+  .landing-bootstrap .navbar-collapse:not(.show) {
+    display: none;
+  }
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}

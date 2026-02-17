@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --surface: #f5f4f0;
+  --surface-elevated: #fefdfb;
+  --surface-muted: #e8e6e1;
+  --border: #d6d4ce;
+  --primary: #0d9488;
+  --primary-hover: #0f766e;
+  --primary-muted: #ccfbf1;
+  --accent: #b45309;
+  --accent-muted: #fef3c7;
+  --muted: #78716c;
+  --card-shadow: 0 2px 8px rgba(120, 113, 108, 0.06);
+  --card-shadow-hover: 0 8px 24px rgba(120, 113, 108, 0.1);
+}
+
+.dark {
+  --surface: #1c1917;
+  --surface-elevated: #292524;
+  --surface-muted: #44403c;
+  --border: #57534e;
+  --primary: #2dd4bf;
+  --primary-hover: #5eead4;
+  --primary-muted: #134e4a;
+  --accent: #f59e0b;
+  --accent-muted: #422006;
+  --muted: #a8a29e;
+  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  --card-shadow-hover: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-stone-900 dark:text-stone-100 antialiased;
+  }
+}
+
+/* Ensure dark mode applies when Bootstrap theme is dark (sync with ThemeContext) */
+[data-bs-theme="dark"] body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+}
+
+/* Bootstrap helpers */
+.hover-bg-light:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
