@@ -11,7 +11,7 @@ pages: write
 id-token: write
 
 concurrency:
-group: "pages"
+group: pages
 cancel-in-progress: false
 
 jobs:
@@ -27,27 +27,17 @@ steps:
     uses: actions/setup-node@v4
     with:
       node-version: "20"
-      cache: npm
-      cache-dependency-path: client/package-lock.json
 
   - name: Setup Pages
     uses: actions/configure-pages@v5
     with:
       static_site_generator: next
 
-  - name: Restore Next.js cache
-    uses: actions/cache@v4
-    with:
-      path: client/.next/cache
-      key: ${{ runner.os }}-nextjs-${{ hashFiles('client/package-lock.json') }}-${{ hashFiles('client/**/*.[jt]s', 'client/**/*.[jt]sx') }}
-      restore-keys: |
-        ${{ runner.os }}-nextjs-${{ hashFiles('client/package-lock.json') }}-
-
   - name: Install dependencies
     working-directory: ./client
-    run: npm ci
+    run: npm install
 
-  - name: Build and Export Next.js
+  - name: Build and Export
     working-directory: ./client
     run: |
       npx next build
@@ -60,11 +50,8 @@ steps:
 ```
 
 deploy:
-environment:
-name: github-pages
-url: ${{ steps.deployment.outputs.page_url }}
-runs-on: ubuntu-latest
 needs: build
+runs-on: ubuntu-latest
 
 ```
 steps:
